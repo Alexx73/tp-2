@@ -13,8 +13,19 @@ namespace cajero_app2
 
         static void Main(string[] args)
         {
-            int operacion, edad_total;
+            // Salidas  
+            int total_de_grupos, personas_total;
+            double rec_pasaportes, individuales, recaudacion_total, edad_promedio; 
+
+            int personas_con_pasaporte, personas_diez_quince;
+            int operacion, edad_total , edad, total_grupos_parcial;
+            double recaudacion, recaudacion_acumulada;
+            edad =0;
             edad_total = 0;
+            total_de_grupos = 0;
+            recaudacion_acumulada = 0;
+            recaudacion= 0;
+            total_grupos_parcial = 0;
             // saldo = 100;
             // int operacion;
 
@@ -32,7 +43,13 @@ namespace cajero_app2
                 case 1:
                     {
                         Console.Clear();
-                        CargarGrupos() ;
+                        // return ( edad_grupo, edad, total_de_grupos, total_grupo) ;
+                        // CargarGrupos() ;
+                        (edad_total, edad, total_grupos_parcial, recaudacion) = CargarGrupos();
+                        recaudacion_acumulada = recaudacion_acumulada + recaudacion;
+                        total_de_grupos = total_de_grupos + total_grupos_parcial ;
+                        // edad_grupo, edad, total_grupo
+
                         // Console.WriteLine("Cargar grupo");
                         // Console.Beep(440, 300);
                         // Console.ReadKey();
@@ -42,7 +59,8 @@ namespace cajero_app2
                 case 2:
                     {
                         Console.Clear();
-                        Console.WriteLine("Ver reporte");
+                        VerDatos(total_de_grupos, recaudacion_acumulada, recaudacion );
+                        // Console.WriteLine("Ver reporte");
                         Console.Beep(440, 300);
                         Console.ReadKey();                     
                     }
@@ -68,6 +86,30 @@ namespace cajero_app2
         }
 
         //--------------------------------------------------
+
+         static void VerDatos(int total_de_Grupos, double recaudacion_total, double recaudacion_parcial)
+        {
+ 
+               // Obtiene el ancho de la consola
+        int consoleWidth = Console.WindowWidth;
+
+        // Calcula la posición horizontal para centrar el menú
+        int menuWidth = 20; // Anchura del menú
+        int leftMargin = (consoleWidth - menuWidth) / 2;
+
+                    Console.Clear();
+
+            // Console.WriteLine("Ver reporte");
+
+        Console.WriteLine("".PadLeft(leftMargin) + "===== DATOS DEL DIA =====");
+        Console.WriteLine("".PadLeft(leftMargin) + "TOTAL GRUPOS: {0}", total_de_Grupos);
+        Console.WriteLine("".PadLeft(leftMargin) + "TOTAL PERSONAS:");
+        Console.WriteLine("".PadLeft(leftMargin) + "RECAUDACION: {0} ", recaudacion_total);
+        Console.WriteLine("".PadLeft(leftMargin) +"==========================");
+        Console.ReadKey();        
+        // return;
+
+        }
        
        static public int Menu()
         {
@@ -111,11 +153,13 @@ namespace cajero_app2
 
         // ---------------------------------------------------------
 
-        static public (int,int, double) CargarGrupos() 
+        static public (int, int, int, double) CargarGrupos() 
+        //edad_grupo, edad, total_grupo
         {
-            int edad, edad_grupo, mayor, menor1, menor2, menor3, entradas_con_descuento;
+            int edad, edad_grupo, mayor, menor1, menor2, menor3, entradas_con_descuento, total_de_grupos;
             double total_grupo, total_sin_desc, entradas, descuento;
             bool aceptado = false;
+            total_de_grupos =0;
             descuento = 0;
             total_grupo = 0;
             entradas = 0;
@@ -179,6 +223,7 @@ namespace cajero_app2
                 // total_grupo =  ( menor1 * 150) +  total_grupo;
             }
             total_grupo = total_sin_desc - descuento + ( menor1 * 150) ;
+            total_de_grupos = total_de_grupos +1;
 
 
             // Console.WriteLine("el total en pesos es: {0}", total_grupo );
@@ -213,7 +258,7 @@ namespace cajero_app2
             Console.WriteLine("presione una tecla para volver al menu principal");
             Console.ReadKey();        
             // Console.WriteLine("la edad total es: {0}", edad_grupo );
-            return ( edad_grupo, edad, total_grupo) ;
+            return ( edad_grupo, edad, total_de_grupos, total_grupo) ;
         }
     }
 }
