@@ -77,7 +77,7 @@ namespace cajero_app2
                 case 2:
                     {
                         Console.Clear();
-                        VerDatos(total_de_grupos,personas_total, recaudacion_acumulada,pasarportes_total, recaudacion );
+                        VerDatos(total_de_grupos,personas_total,pasarportes_total, recaudacion_acumulada, recaudacion );
                         // Console.WriteLine("Ver reporte");
                         Console.Beep(440, 300);
                         Console.ReadKey();                     
@@ -124,7 +124,7 @@ namespace cajero_app2
         Console.WriteLine("".PadLeft(leftMargin) + "TOTAL GRUPOS: {0}", total_de_Grupos);
         Console.WriteLine("".PadLeft( leftMargin) + "TOTAL PERSONAS: {0}", personas_total );
         Console.WriteLine("".PadLeft(leftMargin) + "RECAUDACION PASAPORTES: {0} ", pasaportes);
-
+        Console.WriteLine("".PadLeft(leftMargin) + "RECAUDACION INDIVIDUALES: {0} ", recaudacion_total - pasaportes);
 
         Console.WriteLine("".PadLeft(leftMargin) + "RECAUDACION TOTAL: {0} ", recaudacion_total);
         Console.WriteLine("".PadLeft(leftMargin) +"==========================");
