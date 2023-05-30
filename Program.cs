@@ -182,6 +182,7 @@ namespace cajero_app2
             int edad, edad_grupo, mayor, menor1, menor2, menor3, entradas_con_descuento, total_de_grupos, personas;
             double total_grupo, total_sin_desc, entradas, descuento, entradas_pasaporte;
             bool aceptado = false;
+            string opcion;
             string edad_string ="", edades_grupo ="";
             total_de_grupos =0;
             descuento = 0;
@@ -299,10 +300,14 @@ namespace cajero_app2
             total_grupo = total_sin_desc - descuento + ( menor1 * 150) ;
             total_de_grupos = total_de_grupos +1;
 
+            // do 
+            // {
 
+            Console.Clear();
             Console.WriteLine("el total en pesos es: {0}", total_grupo );
             Console.WriteLine("Aceptar o Cancelar");
-            string opcion = Console.ReadLine();
+            opcion = Console.ReadLine();
+            
             switch (opcion)
             {
                 case "a":
@@ -321,19 +326,35 @@ namespace cajero_app2
                     //aceptado = true; // acumular valores
                     
                     break;
+
                 case "c":
                     Console.WriteLine("Has seleccionado Cancelar.");
                      total_de_grupos =0;
                       personas=0;
                        entradas_pasaporte=0; 
                        edad= 0;
-                        total_grupo=0;
-                    
+                        total_grupo=0;    
                     break;
+
                 default:
+                            Console.ForegroundColor = ConsoleColor.Red;
+
                     Console.WriteLine("Opción inválida. Por favor, seleccione una opción válida.");
+                    Console.ResetColor();
+                                Console.ForegroundColor = ConsoleColor.Green;
+
+                     Thread.Sleep(1500);
+                     Console.Clear();
+            Console.WriteLine("el total en pesos es: {0}", total_grupo );
+            Console.WriteLine("Aceptar o Cancelar");
+            opcion = Console.ReadLine();
+                     
+                    // Console.ReadKey();  
+
                     break;
             }
+            //  }
+            //  while(opcion != "a" || opcion != "c");
             // Console.WriteLine();
 
             // Console.WriteLine("la edad total es: {0}", edad_grupo );
