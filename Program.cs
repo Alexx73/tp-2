@@ -128,7 +128,8 @@ namespace cajero_app2
 
         Console.WriteLine("".PadLeft(leftMargin) + "RECAUDACION TOTAL: {0} ", recaudacion_total);
         Console.WriteLine("".PadLeft(leftMargin) +"==========================");
-        Console.ReadKey();        
+        Console.ReadKey();  
+        Console.ResetColor();
         // return;
 
         }
@@ -299,37 +300,44 @@ namespace cajero_app2
             total_de_grupos = total_de_grupos +1;
 
 
-            // Console.WriteLine("el total en pesos es: {0}", total_grupo );
-            // Console.WriteLine("Aceptar o Cancelar");
-            // string opcion = Console.ReadLine();
-            // switch (opcion)
-            // {
-            //     case "a":
-            //         Console.WriteLine("Has seleccionado Aceptar.");
-            //         aceptado = true; // acumular valores
-            //         break;
-            //     case "c":
-            //         Console.WriteLine("Has seleccionado Cancelar.");
+            Console.WriteLine("el total en pesos es: {0}", total_grupo );
+            Console.WriteLine("Aceptar o Cancelar");
+            string opcion = Console.ReadLine();
+            switch (opcion)
+            {
+                case "a":
+                    Console.WriteLine("Has seleccionado Aceptar.");
+                    Console.WriteLine("la cantidad de entradas menores es: {0}",menor1 );
+                    Console.WriteLine("la cantidad de entradas menor2 es: {0}",menor2 );
+                    Console.WriteLine("la cantidad de entradas menor3 es: {0}",menor3 );
+                    Console.WriteLine("la cantidad de entradas mayor es: {0}",mayor );
+
+
+                    Console.WriteLine("la cantidad de entradas es: {0}",entradas );
+                    Console.WriteLine("el total en pesos es: {0}", total_grupo );
+
+                    Console.WriteLine("presione una tecla para volver al menu principal");
+                    Console.ReadKey();  
+                    //aceptado = true; // acumular valores
                     
-            //         break;
-            //     default:
-            //         Console.WriteLine("Opción inválida. Por favor, seleccione una opción válida.");
-            //         break;
-            // }
+                    break;
+                case "c":
+                    Console.WriteLine("Has seleccionado Cancelar.");
+                     total_de_grupos =0;
+                      personas=0;
+                       entradas_pasaporte=0; 
+                       edad= 0;
+                        total_grupo=0;
+                    
+                    break;
+                default:
+                    Console.WriteLine("Opción inválida. Por favor, seleccione una opción válida.");
+                    break;
+            }
             // Console.WriteLine();
 
             // Console.WriteLine("la edad total es: {0}", edad_grupo );
-            Console.WriteLine("la cantidad de entradas menores es: {0}",menor1 );
-                        Console.WriteLine("la cantidad de entradas menor2 es: {0}",menor2 );
-            Console.WriteLine("la cantidad de entradas menor3 es: {0}",menor3 );
-            Console.WriteLine("la cantidad de entradas mayor es: {0}",mayor );
-
-
-            Console.WriteLine("la cantidad de entradas es: {0}",entradas );
-            Console.WriteLine("el total en pesos es: {0}", total_grupo );
-
-            Console.WriteLine("presione una tecla para volver al menu principal");
-            Console.ReadKey();        
+                  
             // Console.WriteLine("la edad total es: {0}", edad_grupo );
            
             return ( total_de_grupos, personas, entradas_pasaporte, edad, total_grupo) ;
