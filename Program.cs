@@ -10,6 +10,9 @@ namespace cajero_app2
     class Program
     {
         static double saldo;
+        private static int personas_diez_quince;
+        private static object? edad_promedio;
+        private static string personas_total;
 
         static void Main(string[] args)
         {
@@ -123,9 +126,10 @@ namespace cajero_app2
         Console.WriteLine("".PadLeft(leftMargin) + "===== DATOS DEL DIA =====");
         Console.WriteLine("".PadLeft(leftMargin) + "TOTAL GRUPOS: {0}", total_de_Grupos);
         Console.WriteLine("".PadLeft( leftMargin) + "TOTAL PERSONAS: {0}", personas_total );
+        Console.WriteLine("".PadLeft(leftMargin) + "TOTAL PERSONAS ENTRE 10 y 15: {0}", personas_diez_quince);
         Console.WriteLine("".PadLeft(leftMargin) + "RECAUDACION PASAPORTES: {0} ", pasaportes);
         Console.WriteLine("".PadLeft(leftMargin) + "RECAUDACION INDIVIDUALES: {0} ", recaudacion_total - pasaportes);
-
+        Console.WriteLine("".PadLeft(leftMargin) + "EDAD PROMEDIO: {0} ", edad_promedio);
         Console.WriteLine("".PadLeft(leftMargin) + "RECAUDACION TOTAL: {0} ", recaudacion_total);
         Console.WriteLine("".PadLeft(leftMargin) +"==========================");
         Console.ReadKey();  
@@ -279,10 +283,12 @@ namespace cajero_app2
                 } 
                
             }
+            
             }
             while(edad != -1);
             entradas_con_descuento = menor2 + menor3 + mayor ; // numero total de entradas con descuento
             entradas = menor1 + entradas_con_descuento ;
+            personas_diez_quince=menor3;
             total_sin_desc = (mayor * 1500)  + (menor2 * 750) + (menor3 * 1200)   ;
 
             if ( entradas_con_descuento > 3)            
